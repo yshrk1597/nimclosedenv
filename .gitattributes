@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.nim text eol=lf
+*.nimble text eol=lf
+*.cfg text eol=lf
+*.md text eol=lf
+*.txt text
