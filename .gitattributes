@@ -4,4 +4,5 @@
 *.nimble text eol=lf
 *.cfg text eol=lf
 *.md text eol=lf
+*.bat text eol=crlf
 *.txt text

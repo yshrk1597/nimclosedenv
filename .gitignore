@@ -6,3 +6,4 @@ test/
 openssl-*/
 zlib-*/
 overridestdlib/
+generatedcode/
