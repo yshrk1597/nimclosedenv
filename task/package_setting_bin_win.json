@@ -1,0 +1,15 @@
+{
+	"copies":[
+		{
+			"src":"../output/nimclosedenv.exe",
+			"dst":"",
+			"type":"fd"
+		},
+		{
+			"src":"../LICENSE.txt",
+			"dst":"",
+			"type":"fd"
+		}
+	],
+	"license_setting_file":"thirdparty_licenses_for_bin.json"
+}

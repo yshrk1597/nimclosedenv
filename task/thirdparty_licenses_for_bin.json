@@ -1,0 +1,44 @@
+[
+	{
+		"name": "nim",
+		"url": "https://github.com/nim-lang/Nim/raw/devel/copying.txt",
+		"category":"",
+		"filename-format":""
+	},
+	{
+		"name": "nim7z",
+		"url": "https://github.com/genotrance/nim7z/raw/master/LICENSE",
+		"category":"nimble-package",
+		"filename-format":""
+	},
+	{
+		"name": "zip",
+		"url": "https://github.com/nim-lang/zip/raw/master/LICENSE",
+		"category":"nimble-package",
+		"filename-format":""
+	},
+	{
+		"name": "progress",
+		"url": "https://github.com/euantorano/progress.nim/raw/master/LICENSE",
+		"category":"nimble-package",
+		"filename-format":""
+	},
+	{
+		"name": "7zip",
+		"url": "https://github.com/kornelski/7z/raw/master/COPYING",
+		"category":"others",
+		"filename-format":""
+	},
+	{
+		"name": "openssl",
+		"url": "https://github.com/openssl/openssl/raw/master/LICENSE.txt",
+		"category":"others",
+		"filename-format":""
+	},
+	{
+		"name": "zlib",
+		"url": "https://github.com/madler/zlib/raw/master/README",
+		"category":"others",
+		"filename-format":""
+	}
+]

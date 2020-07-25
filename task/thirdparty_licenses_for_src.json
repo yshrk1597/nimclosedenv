@@ -1,0 +1,20 @@
+[
+	{
+		"name": "nim",
+		"url": "https://github.com/nim-lang/Nim/raw/devel/copying.txt",
+		"category":"",
+		"filename-format":""
+	},
+	{
+		"name": "nim7z",
+		"url": "https://github.com/genotrance/nim7z/raw/master/LICENSE",
+		"category":"nimble-package",
+		"filename-format":""
+	},
+	{
+		"name": "7zip",
+		"url": "https://github.com/kornelski/7z/raw/master/COPYING",
+		"category":"others",
+		"filename-format":""
+	}
+]
