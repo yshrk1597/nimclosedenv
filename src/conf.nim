@@ -74,7 +74,7 @@ Options:
         install nim under env. download version is specified
       --nim:https://nim-lang.org/download/nim-1.2.4_x64.zip
         install nim under env. download direct url
-      --nim:C:\Users\username\
+      --nim:C:\Users\username\nim-1.2.6
         use already installed nim. path must be fullpath.  
         (not install nim under env)
     default: latest

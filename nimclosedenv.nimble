@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.10204"
+version       = "0.2.10206"
 author        = "yshrk1597"
 description   = "set up nim closed environment"
 license       = "MIT"

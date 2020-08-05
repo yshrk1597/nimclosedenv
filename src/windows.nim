@@ -57,10 +57,12 @@ const
 
 let 
   downloadUrlTableForNim = {
-    "latest": "https://nim-lang.org/download/nim-1.2.4_x64.zip",
+    "latest": "https://nim-lang.org/download/nim-1.2.6_x64.zip",
+    "1.2.6": "https://nim-lang.org/download/nim-1.2.6_x64.zip",
     "1.2.4": "https://nim-lang.org/download/nim-1.2.4_x64.zip",
     "1.2.2": "https://nim-lang.org/download/nim-1.2.2_x64.zip",
     "1.2.0": "https://nim-lang.org/download/nim-1.2.0_x64.zip",
+    "1.0.8": "https://nim-lang.org/download/nim-1.0.8_x64.zip",
     "1.0.6": "https://nim-lang.org/download/nim-1.0.6_x64.zip",
     "1.0.4": "https://nim-lang.org/download/nim-1.0.4_x64.zip",
     "1.0.2": "https://nim-lang.org/download/nim-1.0.2_x64.zip",
