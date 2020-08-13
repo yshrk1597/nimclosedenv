@@ -31,7 +31,7 @@
 	},
 	{
 		"name": "openssl",
-		"url": "https://github.com/openssl/openssl/raw/master/LICENSE.txt",
+		"url": "https://github.com/openssl/openssl/raw/OpenSSL_1_1_1-stable/LICENSE",
 		"category":"others",
 		"filename-format":""
 	},
