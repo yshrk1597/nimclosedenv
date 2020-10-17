@@ -120,7 +120,7 @@ proc parse*(config: ConfigRef, args: seq[TaintedString]) =
         of "nim":
           if isAbsolute(val):
             let binPath = joinPath(val, "bin")
-            if not existsDir(binPath):
+            if not dirExists(binPath):
               raise newException(CatchableError, "not exist nim/bin directory")
             config.localNimDirectory = val
           else:
@@ -129,7 +129,7 @@ proc parse*(config: ConfigRef, args: seq[TaintedString]) =
           when defined(windows):
             if isAbsolute(val):
               let binPath = joinPath(val, "bin")
-              if not existsDir(binPath):
+              if not dirExists(binPath):
                 raise newException(CatchableError, "not exist mingw/bin directory")
               config.localMingwDirectory = val
             else:

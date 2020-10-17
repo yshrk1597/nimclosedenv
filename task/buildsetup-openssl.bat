@@ -9,7 +9,7 @@ rem set PATH=D:\Local\strawberry-perl-5.30.2.1-64bit-portable\perl\bin;%PATH%
 rem call vcvarsall.bat
 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 
-pushd ..\src\openssl-1.1.1g
+pushd ..\src\openssl-1.1.1h
 
 perl Configure VC-WIN64A no-asm no-shared no-filenames no-tests no-ui-console zlib -static
 

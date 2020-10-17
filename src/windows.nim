@@ -57,7 +57,8 @@ const
 
 let 
   downloadUrlTableForNim = {
-    "latest": "https://nim-lang.org/download/nim-1.2.6_x64.zip",
+    "latest": "https://nim-lang.org/download/nim-1.4.0_x64.zip",
+    "1.4.0": "https://nim-lang.org/download/nim-1.4.0_x64.zip",
     "1.2.6": "https://nim-lang.org/download/nim-1.2.6_x64.zip",
     "1.2.4": "https://nim-lang.org/download/nim-1.2.4_x64.zip",
     "1.2.2": "https://nim-lang.org/download/nim-1.2.2_x64.zip",
@@ -196,7 +197,7 @@ proc downloadAndExtractNim(url: string) =
     var z: ZipArchive
     z.fromBuffer(response.body) # unavailable in windows, because not implement inside function in libzip_all.c 
     ]#
-    if existsFile(downloadNimFilename):
+    if fileExists(downloadNimFilename):
       removeFile(downloadNimFilename)
     waitFor download(url, downloadNimFilename)
   block:
@@ -226,7 +227,7 @@ proc downloadAndExtractNim(url: string) =
 
 proc downloadAndExtractMingw() = 
   block:
-    if existsFile(downloadMingwFilename):
+    if fileExists(downloadMingwFilename):
       removeFile(downloadMingwFilename)
     waitFor download(downloadUrlForMingw, downloadMingwFilename)
   block:
@@ -239,7 +240,7 @@ proc downloadAndExtractMingw() =
   removeFile(downloadMingwFilename)
 
 proc writeScriptActivate(nimDir, mingwDir: string) = 
-  if not existsFile(scriptActivateFilepath):
+  if not fileExists(scriptActivateFilepath):
     echo(&"write script \"{scriptActivateFilepath}\"")
     let content = getContentForScriptActivate(nimDir, mingwDir)
     writeFile(scriptActivateFilepath, content[])
@@ -247,7 +248,7 @@ proc writeScriptActivate(nimDir, mingwDir: string) =
     echo(&"already exist script \"{scriptActivateFilepath}\". skip")
 
 proc writeScriptDeactivate() =
-  if not existsFile(scriptDeactivateFilepath):
+  if not fileExists(scriptDeactivateFilepath):
     echo(&"write script \"{scriptDeactivateFilepath}\"")
     let content = getContentForScriptDeactivate()
     writeFile(scriptDeactivateFilepath, content[])
@@ -255,7 +256,7 @@ proc writeScriptDeactivate() =
     echo(&"already exist script \"{scriptDeactivateFilepath}\". skip")
 
 proc writeScriptNimbleInstall() =
-  if not existsFile(scriptNimbleInstallFilepath):
+  if not fileExists(scriptNimbleInstallFilepath):
     echo(&"write script \"{scriptNimbleInstallFilepath}\"")
     let content = getContentForScriptNimbleInstall()
     writeFile(scriptNimbleInstallFilepath, content[])
@@ -265,11 +266,11 @@ proc writeScriptNimbleInstall() =
 proc setup*(config: conf.ConfigRef) =
   topWrap:
     let envPath = config.envPath
-    if config.clean and existsDir(envPath):
+    if config.clean and dirExists(envPath):
       errorHook(&"failed to remove \"{envPath}\""):
         removeDir(envPath)
     # create closed environment directory
-    if not existsDir(envPath):
+    if not dirExists(envPath):
       echo(&"create directory \"{envPath}\"")
       errorHook(&"failed to create \"{envPath}\""):
         createDir(envPath)
@@ -279,7 +280,7 @@ proc setup*(config: conf.ConfigRef) =
     var createdDirs: seq[string]
     errorHook("failed to create directory"):
       for d in directoriesForCreate:
-        if not existsDir(d):
+        if not dirExists(d):
           echo(&"create directory \"{envPath}{DirSep}{d}\"")
           createDir(d)
           createdDirs.add(d)
@@ -287,9 +288,9 @@ proc setup*(config: conf.ConfigRef) =
     # install nim
     if not config.useLocalNimDirectory():
       errorHook("failed to install nim under env"):
-        if config.updateNim and existsDir(directoryNim):
+        if config.updateNim and dirExists(directoryNim):
           removeDir(directoryNim)
-        if not existsDir(directoryNim):
+        if not dirExists(directoryNim):
           var url: string
           if config.nimSpecified in downloadUrlTableForNim:
             url = downloadUrlTableForNim[config.nimSpecified]
@@ -302,20 +303,20 @@ proc setup*(config: conf.ConfigRef) =
     # install mingw
     if not config.useLocalMingwDirectory():
       errorHook("failed to install mingw under env"):
-        if config.updateMingw and existsDir(directoryMingw):
+        if config.updateMingw and dirExists(directoryMingw):
           removeDir(directoryMingw)
-        if not existsDir(directoryMingw):
+        if not dirExists(directoryMingw):
           downloadAndExtractMingw()
 
     # create scripts
     echo("create(update) scripts if needed...")
     if config.updateScripts:
       errorHook("failed to remove script before update"):
-        if existsFile(scriptActivateFilepath):
+        if fileExists(scriptActivateFilepath):
           removeFile(scriptActivateFilepath)
-        if existsFile(scriptDeactivateFilepath):
+        if fileExists(scriptDeactivateFilepath):
           removeFile(scriptDeactivateFilepath)
-        if existsFile(scriptNimbleInstallFilepath):
+        if fileExists(scriptNimbleInstallFilepath):
           removeFile(scriptNimbleInstallFilepath)
     errorHook("failed to write script"):
       writeScriptActivate(config.localNimDirectory, config.localMingwDirectory)
