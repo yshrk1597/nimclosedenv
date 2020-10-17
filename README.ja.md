@@ -123,6 +123,19 @@ activate済みのターミナルを起動できるようにするには以下の
      作成した閉鎖環境のフルパス
      ```
 
+## 閉鎖環境化でのVisualStudioCodeの起動
+準備として既存のVisualStudioCodeの環境を利用するためにリンクを張ります。
+1. 管理者権限でコマンドプロンプトを開き以下のコマンドを実行
+    ```
+    cd 閉鎖環境ディレクトリ\home
+    mklink /d .vscode C:\Users\ユーザー名\.vscode
+    ```
+VisualStudioCodeの起動は前述の閉鎖環境をWindows Terminal & PowerShellで起動した上で
+以下のコマンドを実行すれば起動できます。
+```
+code
+```
+
 # ビルド方法
 基本方針として、なるべくdllに依存しない単独で動くexeを生成させることを目的としています。
 1. 依存するnimbleパッケージのインストール
@@ -156,7 +169,7 @@ activate済みのターミナルを起動できるようにするには以下の
       
       https://www.openssl.org/ よりソースコードをダウンロードし、srcディレクトリー以下に展開しておきます。
       
-      2020年7月現在の最新バージョンは1.1.1gで、src/openssl-1.1.1g として展開されることを想定しています。
+      2020年10月現在の最新バージョンは1.1.1hで、src/openssl-1.1.1h として展開されることを想定しています。
    1. VisualStudio2019 のインストール
       
       https://visualstudio.microsoft.com/ja/ からVisualStudio2019をダウンロード、インストールしてください。
